@@ -3,3 +3,38 @@
     padding: 0;
     box-sizing: border-box;
 }
+.navbar {
+    display: flex;
+    background-color: lightskyblue;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+.navlinks {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.link {
+    padding: 10px;
+    margin-right: 4px;
+}
+
+.home {
+    height: 100vh;
+}
+
+.footer {
+    display: flex;
+    padding: 1rem;
+    position: sticky;
+    bottom: 0;
+    background-color: lightskyblue;
+    justify-content: center;
+}
+.footlinks {
+    display: flex;
+}
