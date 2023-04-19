@@ -11,13 +11,13 @@ export default function Navbar() {
           <button className="link">Home</button>
         </li>
         <li>
-          <button className="link">Login/Register</button>
-        </li>
-        <li>
           <button className="link">Profile</button>
         </li>
         <li>
           <button className="link">Create Listing</button>
+        </li>
+        <li>
+          <button className="link">Login/Register</button>
         </li>
       </ul>
     </div>

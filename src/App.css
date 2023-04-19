@@ -2,7 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+.app, html {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 .navbar {
     display: flex;
     background-color: lightskyblue;
@@ -11,6 +17,8 @@
     top: 0;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 1px 1px 1px 1px;
+    border-radius: 6px;
 }
 .navlinks {
     display: flex;
@@ -24,9 +32,34 @@
 }
 
 .home {
-    height: 100vh;
+    margin-top: 12px;
+    width: 99vw;
+    min-height: 100vh;
 }
-
+.home-header {
+    text-align: center;
+}
+.allposts {
+    display: flex;
+    flex-direction: column;
+}
+.one-post {
+    margin: 10px;
+    padding: 2rem; 
+    border: 1px solid;
+    box-shadow: 1px 1px 2px 2px ;
+}
+.post-title {
+    margin: 4px;
+}
+.post-body {
+    margin: 4px;
+}
+.details-button {
+    margin: 4px;
+    padding: 5px;
+    font-size: medium;
+}
 .footer {
     display: flex;
     padding: 1rem;
@@ -34,7 +67,14 @@
     bottom: 0;
     background-color: lightskyblue;
     justify-content: center;
+    box-shadow: 1px 1px 1px 2px;
+    border-radius: 6px;
 }
 .footlinks {
     display: flex;
+}
+
+.footlink {
+    padding: 6px;
+    margin: 2px;
 }
