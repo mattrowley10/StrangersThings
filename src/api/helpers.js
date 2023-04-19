@@ -5,6 +5,7 @@ export const getPosts = async () => {
 	try {
 		const response = await fetch(`${baseUrl}/posts`);
 		const result = await response.json();
+        console.log(result)
 		return result.data.posts;
 	} catch (error) {
 		console.error("ERROR");

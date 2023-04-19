@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getPosts } from "../api/helpers";
+import "./AllPosts.css";
 
 export default function AllPosts() {
   const [posts, setPosts] = useState([]);
@@ -25,6 +26,7 @@ export default function AllPosts() {
             <h1 className="post-title">{post.title}</h1>
             <p className="post-body">{post.description}</p>
             <p className="author">User: {post.author.username}</p>
+            <p className="delivery">{post.willDeliver ? true : false}</p>
             <button className="details-button">Details</button>
           </div>
         );
