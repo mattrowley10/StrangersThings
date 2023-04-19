@@ -8,19 +8,6 @@ export default function Home() {
         All Posts
       </h1>
       <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
-      <AllPosts />
     </div>
   );
 }

@@ -1,6 +1,5 @@
-.allposts {
-    display: flex;
-    flex-direction: column;
+.single-post {
+    min-height: 100vh;
 }
 .one-post {
     margin: 10px;

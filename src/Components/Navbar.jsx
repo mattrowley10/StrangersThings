@@ -8,7 +8,9 @@ export default function Navbar() {
       <h1>Strangers Thing's</h1>
       <ul className="navlinks">
         <li>
-          <button className="link">Home</button>
+          <button className="link" onClick={() => nav("/")}>
+            Home
+          </button>
         </li>
         <li>
           <button className="link">Profile</button>

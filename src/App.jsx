@@ -21,7 +21,7 @@ function App() {
         <Route path="/CreatePost" element={<CreatePost />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
-        <Route path="/SinglePost" element={<SinglePost />} />
+        <Route path="/:id" element={<SinglePost />} />
         <Route path="/Contact" element={<Contact />} />
       </Routes>
       <Footer />
