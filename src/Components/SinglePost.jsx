@@ -3,10 +3,12 @@ import "./SinglePost.css";
 import { useState, useEffect } from "react";
 import { getPosts } from "../api/helpers";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SinglePost() {
   const [post, setPost] = useState("");
   const { _id } = useParams();
+  const nav = useNavigate();
   useEffect(() => {
     async function onePost() {
       try {
@@ -29,7 +31,14 @@ export default function SinglePost() {
               <p className="post-body">{post.description}</p>
             </li>
           </ul>
-          <button className="details-button">Details</button>
+          <button
+            className="home-button"
+            onClick={() => {
+              nav("/");
+            }}
+          >
+            Home
+          </button>
         </div>
       )}
     </div>

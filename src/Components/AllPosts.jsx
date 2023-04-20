@@ -41,7 +41,7 @@ export default function AllPosts() {
             </ul>
             <button
               className="details-button"
-              // onClick={() => nav(`/${post._id}`)}
+              onClick={() => nav(`/${post._id}`)}
             >
               Details
             </button>
