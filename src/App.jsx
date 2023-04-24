@@ -10,8 +10,10 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import SinglePost from "./Components/SinglePost";
 import Contact from "./Components/Contact";
+import useAuth from "./hooks/useAuth";
+
 function App() {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const { token, user } = useAuth();
   return (
     <div className="App">
       <Navbar />
