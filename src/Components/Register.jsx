@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../api/helpers";
 import useAuth from "../hooks/useAuth";
-import "./Login.css";
+import "./Register.css";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -23,23 +23,27 @@ export default function Register() {
   }
 
   return (
-    <div>
+    <div className="register">
       <form id="registerForm" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          name="password"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <button id="registerSubmit">Submit</button>
+        <div className="register-form">
+          <h2>Register</h2>
+          <br></br>
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <br />
+          <input
+            type="text"
+            name="password"
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <button id="registerSubmit">Submit</button>
+        </div>
       </form>
     </div>
   );

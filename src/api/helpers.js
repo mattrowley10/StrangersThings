@@ -52,7 +52,26 @@ export const registerUser= async (username, password) => {
 		console.error(error)
 	}
 } 
-
+export const loginUser = async (username, password) => {
+	try {const response = await fetch (`${baseUrl}/users/login`,{
+	method: "POST",
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	body: JSON.stringify({
+		user: {
+			username: username,
+			password: password,
+		}
+	})
+})
+const result = await response.json()
+console.log(result);
+return result
+} catch (error){
+	console.error(error)
+}
+}
 export const getToken = async (token) =>
 {
 	try {
@@ -78,4 +97,4 @@ export const fetchSinglePost = async (id) => {
 	} catch (error) {
 		console.error("Oops, I couldn't fetch that post!");
 	}
-}; 
+};
