@@ -31,7 +31,7 @@ export const createPost = async () => {
 	}
 };
 
-export const registerUser= async (username, password) => {
+export const registerUser = async (username, password) => {
 	try { 
 		const response = await fetch (`${baseUrl}/users/register`, {
 			method: "POST",
@@ -46,7 +46,6 @@ export const registerUser= async (username, password) => {
 			}),
 		});
 		const result = await response.json()
-		console.log()
 		return result
 	} catch (error){
 		console.error(error)

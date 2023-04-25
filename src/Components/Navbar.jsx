@@ -13,7 +13,9 @@ export default function Navbar() {
           </button>
         </li>
         <li>
-          <button className="link">Profile</button>
+          <button className="link" onClick={() => nav("/Profile")}>
+            Profile
+          </button>
         </li>
         <li>
           <button className="link" onClick={() => nav("/CreatePost")}>
