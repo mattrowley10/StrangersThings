@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getPosts } from "../api/helpers";
-import "./AllPosts.css";
+import "../Styles/AllPosts.css";
 import { useNavigate } from "react-router";
 
 export default function AllPosts() {

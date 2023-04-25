@@ -1,5 +1,5 @@
 import React from "react";
-import "./SinglePost.css";
+import "../Styles/SinglePost.css";
 import { useState, useEffect } from "react";
 import { getPosts } from "../api/helpers";
 import { useParams } from "react-router-dom";

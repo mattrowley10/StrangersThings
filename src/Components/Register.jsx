@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { registerUser } from "../api/helpers";
 import useAuth from "../hooks/useAuth";
-import "./Register.css";
+import "../Styles/Register.css";
 
 export default function Register() {
   const [username, setUsername] = useState("");

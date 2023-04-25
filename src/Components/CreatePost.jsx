@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { createPost } from "../api/helpers";
-import "./CreatePost.css";
+import "../Styles/CreatePost.css";
 
 export default function newPost() {
   const [item, setItem] = useState("");
