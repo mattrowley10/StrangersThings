@@ -12,3 +12,9 @@
     border: 1px solid;
     box-shadow: 1px 1px 2px 2px ;
 }
+.description {
+    padding-bottom:4rem;
+    min-height: 50px;
+    min-width: 1rem;
+    /* want this to expand down if description is long */
+}

@@ -11,7 +11,15 @@ export const getPosts = async () => {
 	}
 };
 
-export const createPost = async (token) => {
+export const createPost = async (
+	user,
+	title,
+	price,
+	description,
+	location,
+	willDeliver,
+	token,
+	) => {
 	try {
 		const response = await fetch(`${baseUrl}/posts`, {
 			method: "POST",
@@ -21,10 +29,13 @@ export const createPost = async (token) => {
 			},
 			body: JSON.stringify({
 				post: {
+					user,
 					title,
-					description, 
 					price,
+					description,
+					location,
 					willDeliver,
+					token
 				},
 			}),
 		});
@@ -35,7 +46,22 @@ export const createPost = async (token) => {
 		console.error(err);
 	}
 };
-
+export const deletePost = async (token, id) =>{
+	try {
+		const response = await fetch(`${baseUrl}/posts/${id}`,{
+			method: "DELETE",
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		const result = await response.json();
+		console.log("Result from Delete", result)
+		return result
+	} catch (error){
+		console.error(error)
+	}
+}
 export const registerUser = async (username, password) => {
 	try { 
 		const response = await fetch (`${baseUrl}/users/register`, {
@@ -86,7 +112,6 @@ export const getToken = async (token) =>
 			},
 		})
 		const result = await response.json();
-		console.log("Result in getToken", result);
 		return result
 	} catch (error){
 		console.error(error)

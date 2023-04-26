@@ -4,10 +4,12 @@ import "../Styles/CreatePost.css";
 import useAuth from "../hooks/useAuth";
 
 export default function newPost() {
-  const [item, setItem] = useState("");
+  const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const { user } = useAuth();
+  const [willDeliver, setWillDeliver] = useState(false);
+  const [location, setLocation] = useState("");
+  const { user, token } = useAuth();
   const posts = user.posts;
 
   return (
@@ -15,24 +17,45 @@ export default function newPost() {
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          const newItem = await createPost();
-          console.log("New Item: ", newItem);
+          const newItem = await createPost(
+            user,
+            title,
+            price,
+            description,
+            location,
+            willDeliver,
+            token
+          );
         }}
       >
         <div className="create-form">
           <h2>List an item for sale!</h2>
           <br></br>
-          <label htmlFor="Title">Title:</label>
-          <input type="text" onChange={(e) => setItem(e.target.value)} />
+          <label htmlFor="title">Title:</label>
+          <input type="text" onChange={(e) => setTitle(e.target.value)} />
           <br></br>
           <br></br>
-          <label htmlFor="Description">Description:</label>
-          <input type="text" onChange={(e) => setDescription(e.target.value)} />
+          <label htmlFor="description">Description:</label>
+          <input
+            className="description"
+            type="text"
+            onChange={(e) => setDescription(e.target.value)}
+          />
           <br />
           <br />
           <label htmlFor="price">Price:</label>
           <input type="text" onChange={(e) => setPrice(e.target.value)} />
           <br />
+          <label htmlFor="location">Location:</label>
+          <input type="text" onChange={(e) => setLocation(e.target.value)} />
+          <br />
+          <label htmlFor="willDeliver">Will Deliver?</label>
+          <input
+            type="checkbox"
+            onChange={(e) => setWillDeliver(e.target.value === true)}
+          />
+          <br></br>
+          <br></br>
           <button>Submit</button>
         </div>
       </form>
