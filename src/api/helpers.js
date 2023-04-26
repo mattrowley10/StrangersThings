@@ -11,7 +11,7 @@ export const getPosts = async () => {
 	}
 };
 
-export const createPost = async () => {
+export const createPost = async (token) => {
 	try {
 		const response = await fetch(`${baseUrl}/posts`, {
 			method: "POST",
@@ -20,7 +20,12 @@ export const createPost = async () => {
 				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify({
-				post: {},
+				post: {
+					title,
+					description, 
+					price,
+					willDeliver,
+				},
 			}),
 		});
 		const result = await response.json();

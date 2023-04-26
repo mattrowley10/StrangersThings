@@ -6,7 +6,10 @@ export const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({
+    posts: [],
+    messages: [],
+  });
   useEffect(() => {
     async function getMe() {
       const apiResponse = await getToken(token);

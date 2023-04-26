@@ -1,6 +1,10 @@
 .profile {
     min-height: 85vh;
 }
+.profile-header {
+    margin: 10px;
+    margin-bottom: 1rem;
+}
 .messages {
     display: flex;
     margin: 10px;
