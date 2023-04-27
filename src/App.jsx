@@ -10,6 +10,7 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import SinglePost from "./Components/SinglePost";
 import Contact from "./Components/Contact";
+import Message from "./Components/Message";
 import useAuth from "./hooks/useAuth";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/Register" element={<Register />} />
         <Route path="/:id" element={<SinglePost />} />
         <Route path="/Contact" element={<Contact />} />
+        <Route path="/Message" element={<Message />} />
       </Routes>
       <Footer />
     </div>

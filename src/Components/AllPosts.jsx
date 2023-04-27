@@ -10,6 +10,7 @@ export default function AllPosts() {
   const nav = useNavigate();
   const [posts, setPosts] = useState([]);
   const { token, user } = useAuth();
+
   const willDeliver = true;
   useEffect(() => {
     async function getAllPosts() {
@@ -56,9 +57,7 @@ export default function AllPosts() {
                 className="delete-button"
                 onClick={async (e) => {
                   await deletePost(token, post._id);
-                  // window.location.reload(false);
                   setPosts(posts);
-                  console.log(posts);
                   console.log("Posts from data", user.posts);
                 }}
               >
@@ -66,7 +65,14 @@ export default function AllPosts() {
               </button>
             )}
             {post.author.username !== user.username && (
-              <button className="message-button">Message</button>
+              <button
+                className="message-button"
+                onClick={() => {
+                  nav("/Message", { state: post });
+                }}
+              >
+                Message
+              </button>
             )}
           </div>
         );

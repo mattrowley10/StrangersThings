@@ -32,7 +32,6 @@ export default function Profile() {
             })}
           </p>
         )}
-        <br></br>
       </div>
       <div className="yourPosts">
         <h2>Your Posts:</h2>

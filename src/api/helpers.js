@@ -1,5 +1,5 @@
 const cohortName = '2301-FTB-ET-WEB-AM'
-const baseUrl = 'https://strangers-things.herokuapp.com/api/${cohortName}'
+const baseUrl = `https://strangers-things.herokuapp.com/api/${cohortName}`
 
 export const getPosts = async () => {
 	try {
@@ -108,11 +108,11 @@ export const getToken = async (token) =>
 		const response = await fetch(`${baseUrl}/users/me`,{
 			headers:{
 				"Content-Type": "application/json",
-				Authorization: `Bearer ${token}`,
+				"Authorization": `Bearer ${token}`,
 			},
 		})
 		const result = await response.json();
-		return result
+		return result;
 	} catch (error){
 		console.error(error)
 	}
@@ -127,9 +127,9 @@ export const fetchSinglePost = async (id) => {
 		console.error("Oops, I couldn't fetch that post!");
 	}
 };
-export const postMessage = async (id, token) => {
+export const postMessage = async (token, id) => {
 	try{
-		const response = await fetch(`${baseUrl}/posts/${id}/message`,{
+		const response = await fetch(`${baseUrl}/posts/${id}/messages`,{
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json',
@@ -137,7 +137,7 @@ export const postMessage = async (id, token) => {
 			},
 			body: JSON.stringify({
 				message: {
-					content: ""
+					content: String
 				}
 			})
 		})
