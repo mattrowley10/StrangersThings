@@ -7,8 +7,6 @@
     text-decoration: underline;
 }
 .ones-post {
-    display: flex;
-    flex-direction: column;
     margin: 10px;
     margin-top: 1rem;
     padding: 2rem; 
@@ -40,6 +38,11 @@
 }
 
 .home-button {
+    margin: 4px;
+    padding: 5px;
+    font-size: medium;
+}
+.deleted-button{
     margin: 4px;
     padding: 5px;
     font-size: medium;

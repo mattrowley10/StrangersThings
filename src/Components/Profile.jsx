@@ -52,6 +52,16 @@ export default function Profile() {
                   </li>
                 </ul>
                 <button
+                  className="details-button"
+                  onClick={() => {
+                    posts.filter((post) => post._id);
+                    console.log(post);
+                    nav("/id", { state: post });
+                  }}
+                >
+                  Details
+                </button>
+                <button
                   className="delete-button"
                   onClick={async (e) => {
                     await deletePost(token, post._id);

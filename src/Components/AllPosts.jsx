@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import { getPosts } from "../api/helpers";
 import "../Styles/AllPosts.css";
 import { useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth";
 
 export default function AllPosts() {
   const nav = useNavigate();
   const [posts, setPosts] = useState([]);
+  const { id, user } = useAuth();
   const willDeliver = true;
   useEffect(() => {
     async function getAllPosts() {
@@ -49,6 +51,9 @@ export default function AllPosts() {
             >
               Details
             </button>
+            {post.author.username === user.username && (
+              <button className="delete-button">Delete</button>
+            )}
           </div>
         );
       })}

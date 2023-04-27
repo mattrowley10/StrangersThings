@@ -2,11 +2,13 @@ import React from "react";
 import "../Styles/SinglePost.css";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
+import useAuth from "../hooks/useAuth";
 
 export default function SinglePost() {
   const location = useLocation();
   const nav = useNavigate();
   const post = location.state;
+  const { user } = useAuth();
   console.log(post);
   return (
     <div className="singles-post">
@@ -31,16 +33,17 @@ export default function SinglePost() {
           <li>
             <p className="post-price">{post.price}</p>
           </li>
-          <li>
-            <button
-              className="home-button"
-              onClick={() => {
-                nav("/");
-              }}
-            >
-              Home
-            </button>
-          </li>
+          <button
+            className="home-button"
+            onClick={() => {
+              nav("/");
+            }}
+          >
+            Home
+          </button>
+          {post.author.username === user.username && (
+            <button className="deleted-button">Delete</button>
+          )}
         </ul>
       </div>
     </div>
