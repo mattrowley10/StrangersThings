@@ -3,12 +3,13 @@ import "../Styles/SinglePost.css";
 import { useLocation } from "react-router";
 import { useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import { deletePost } from "../api/helpers";
 
 export default function SinglePost() {
   const location = useLocation();
   const nav = useNavigate();
   const post = location.state;
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   console.log(post);
   return (
     <div className="singles-post">
@@ -42,7 +43,15 @@ export default function SinglePost() {
             Home
           </button>
           {post.author.username === user.username && (
-            <button className="deleted-button">Delete</button>
+            <button
+              className="deleted-button"
+              onClick={async (e) => {
+                await deletePost(token, post._id);
+                nav("/");
+              }}
+            >
+              Delete
+            </button>
           )}
         </ul>
       </div>
