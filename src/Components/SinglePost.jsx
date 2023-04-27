@@ -1,46 +1,48 @@
 import React from "react";
 import "../Styles/SinglePost.css";
-import { useState, useEffect } from "react";
-import { getPosts } from "../api/helpers";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function SinglePost() {
-  const [post, setPost] = useState("");
-  const { _id } = useParams();
+  const location = useLocation();
   const nav = useNavigate();
-  useEffect(() => {
-    async function onePost() {
-      try {
-        const getPost = await getPosts(_id);
-        setPost(getPost);
-      } catch (error) {
-        console.error("Oops");
-      }
-    }
-    onePost();
-  }, []);
-
+  const post = location.state;
+  console.log(post);
   return (
-    <div className="single-post">
-      {post && (
-        <div className="one-post" key={post.id}>
-          <h1 className="post-title">No Reference to Single Post in API</h1>
-          <ul className="post-info">
-            <li>
-              <p className="post-body">{post.description}</p>
-            </li>
-          </ul>
-          <button
-            className="home-button"
-            onClick={() => {
-              nav("/");
-            }}
-          >
-            Home
-          </button>
-        </div>
-      )}
+    <div className="singles-post">
+      <h1 className="single-post-header">Details</h1>
+      <div className="ones-post">
+        <h1 className="post-title">{post.title}</h1>
+        <ul className="post-info">
+          <li>
+            <p className="post-body">{post.description}</p>
+          </li>
+          <li>
+            <p className="author">User: {post.author.username}</p>
+            {post.willDeliver ? (
+              <p className="delivery">Will Deliver!</p>
+            ) : (
+              <p></p>
+            )}
+          </li>
+          <li>
+            <p className="post-location">{post.location}</p>
+          </li>
+          <li>
+            <p className="post-price">{post.price}</p>
+          </li>
+          <li>
+            <button
+              className="home-button"
+              onClick={() => {
+                nav("/");
+              }}
+            >
+              Home
+            </button>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

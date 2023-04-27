@@ -41,7 +41,11 @@ export default function AllPosts() {
             </ul>
             <button
               className="details-button"
-              onClick={() => nav(`/${post._id}`)}
+              onClick={() => {
+                posts.filter((post) => post._id);
+                console.log(post);
+                nav("/id", { state: post });
+              }}
             >
               Details
             </button>

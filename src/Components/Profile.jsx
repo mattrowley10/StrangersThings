@@ -6,11 +6,10 @@ import { useState, useEffect } from "react";
 import { deletePost, getToken } from "../api/helpers";
 
 export default function Profile() {
-  const { user, token, setId } = useAuth();
+  const { user, token } = useAuth();
   const nav = useNavigate();
   const [messages, setMessages] = useState([]);
   const [posts, setPosts] = useState([]);
-  const deletedPosts = [];
   useEffect(() => {
     async function getMyPosts() {
       const getMe = await getToken(token);
@@ -53,7 +52,7 @@ export default function Profile() {
                   </li>
                 </ul>
                 <button
-                  className="details-button"
+                  className="delete-button"
                   onClick={async (e) => {
                     await deletePost(token, post._id);
                     setPosts(posts);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createPost } from "../api/helpers";
 import "../Styles/CreatePost.css";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router";
 
 export default function newPost() {
   const [title, setTitle] = useState("");
@@ -10,7 +11,7 @@ export default function newPost() {
   const [willDeliver, setWillDeliver] = useState(false);
   const [location, setLocation] = useState("");
   const { user, token } = useAuth();
-  const posts = user.posts;
+  const nav = useNavigate();
 
   return (
     <div className="create">
@@ -26,6 +27,7 @@ export default function newPost() {
             willDeliver,
             token
           );
+          nav("/");
         }}
       >
         <div className="create-form">

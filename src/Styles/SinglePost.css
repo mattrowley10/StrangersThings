@@ -1,8 +1,16 @@
-.single-post {
-    min-height: 100vh;
+.singles-post {
+    min-height: 85vh;
 }
-.one-post {
+.single-post-header {
+    margin-top: 1rem;
+    text-align: center;
+    text-decoration: underline;
+}
+.ones-post {
+    display: flex;
+    flex-direction: column;
     margin: 10px;
+    margin-top: 1rem;
     padding: 2rem; 
     border: 1px solid;
     box-shadow: 1px 1px 2px 2px ;
@@ -22,6 +30,12 @@
 }
 .post-info {
     list-style: none;
+    margin: 4px;
+}
+.post-location{
+    margin: 4px;
+}
+.post-price {
     margin: 4px;
 }
 
