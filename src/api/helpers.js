@@ -127,7 +127,7 @@ export const fetchSinglePost = async (id) => {
 		console.error("Oops, I couldn't fetch that post!");
 	}
 };
-export const postMessage = async (token, id) => {
+export const postMessage = async (token, id, content) => {
 	try{
 		const response = await fetch(`${baseUrl}/posts/${id}/messages`,{
 			method: "POST",
@@ -137,7 +137,7 @@ export const postMessage = async (token, id) => {
 			},
 			body: JSON.stringify({
 				message: {
-					content: String
+					content: content,
 				}
 			})
 		})

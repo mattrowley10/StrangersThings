@@ -19,7 +19,7 @@ export default function Message() {
         <input
           type="text"
           htmlFor="message"
-          content={content}
+          value={content}
           placeholder="Message Text Here"
           className="message-input"
           onChange={(e) => setContent(e.target.value)}
@@ -27,7 +27,7 @@ export default function Message() {
         <button
           className="message-button"
           onClick={async (e) => {
-            await postMessage(token, post._id);
+            await postMessage(token, post._id, content);
             nav("/");
           }}
         >

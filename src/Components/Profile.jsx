@@ -23,15 +23,17 @@ export default function Profile() {
       <h2 className="profile-header">Welcome {user.username}!</h2>
       <div className="yourMessages">
         <h2>Your Messages: </h2>
-        {messages.length === 0 ? (
+        {messages.length === 0 && (
           <p className="no-messages">You have no new messages</p>
-        ) : (
-          <p>
-            {messages.map((message) => {
-              return <p>{message.content}</p>;
-            })}
-          </p>
         )}
+        {messages.map((message) => {
+          if (message.fromUser.username !== user.username)
+            return (
+              <div className="one-message" key={message._id}>
+                <p className="one-message-content">{message.content}</p>
+              </div>
+            );
+        })}
       </div>
       <div className="yourPosts">
         <h2>Your Posts:</h2>
