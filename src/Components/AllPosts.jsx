@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getPosts } from "../api/helpers";
+import { deletePost } from "../api/helpers";
 import "../Styles/AllPosts.css";
 import { useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
@@ -8,7 +9,7 @@ import useAuth from "../hooks/useAuth";
 export default function AllPosts() {
   const nav = useNavigate();
   const [posts, setPosts] = useState([]);
-  const { id, user } = useAuth();
+  const { token, user } = useAuth();
   const willDeliver = true;
   useEffect(() => {
     async function getAllPosts() {
@@ -20,8 +21,7 @@ export default function AllPosts() {
       }
     }
     getAllPosts();
-  }, []);
-
+  }, [posts]);
   return (
     <div className="allposts">
       {posts.map((post) => {
@@ -45,14 +45,28 @@ export default function AllPosts() {
               className="details-button"
               onClick={() => {
                 posts.filter((post) => post._id);
-                console.log(post);
+                console.log("Post from AllPost", post);
                 nav("/id", { state: post });
               }}
             >
               Details
             </button>
             {post.author.username === user.username && (
-              <button className="delete-button">Delete</button>
+              <button
+                className="delete-button"
+                onClick={async (e) => {
+                  await deletePost(token, post._id);
+                  // window.location.reload(false);
+                  setPosts(posts);
+                  console.log(posts);
+                  console.log("Posts from data", user.posts);
+                }}
+              >
+                Delete
+              </button>
+            )}
+            {post.author.username !== user.username && (
+              <button className="message-button">Message</button>
             )}
           </div>
         );

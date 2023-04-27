@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import "../Styles/Profile.css";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
-import { deletePost, getToken } from "../api/helpers";
+import { deletePost, getToken, postMessage } from "../api/helpers";
 
 export default function Profile() {
   const { user, token } = useAuth();
@@ -21,12 +21,18 @@ export default function Profile() {
   return (
     <div className="profile">
       <h2 className="profile-header">Welcome {user.username}!</h2>
-      <div className="messages">
+      <div className="yourMessages">
         <h2>Your Messages: </h2>
-        {messages.length === 0 && (
+        {messages.length === 0 ? (
           <p className="no-messages">You have no new messages</p>
+        ) : (
+          <p>
+            {messages.map((message) => {
+              return <p>{message.content}</p>;
+            })}
+          </p>
         )}
-        <p>{messages}</p>
+        <br></br>
       </div>
       <div className="yourPosts">
         <h2>Your Posts:</h2>
@@ -65,8 +71,6 @@ export default function Profile() {
                   className="delete-button"
                   onClick={async (e) => {
                     await deletePost(token, post._id);
-                    setPosts(posts);
-                    console.log(posts);
                   }}
                 >
                   Delete
