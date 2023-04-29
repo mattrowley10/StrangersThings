@@ -3,7 +3,7 @@ import useAuth from "../hooks/useAuth";
 import "../Styles/Profile.css";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
-import { deletePost, getToken, postMessage } from "../api/helpers";
+import { deletePost, editPost, getToken, postMessage } from "../api/helpers";
 
 export default function Profile() {
   const { user, token } = useAuth();
@@ -74,6 +74,15 @@ export default function Profile() {
                   }}
                 >
                   Delete
+                </button>
+                <button
+                  className="edit-button"
+                  onClick={async (e) => {
+                    await editPost(token, post._id);
+                    nav("/Edit", { state: post });
+                  }}
+                >
+                  Edit
                 </button>
               </div>
             );

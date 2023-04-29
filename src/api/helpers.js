@@ -148,3 +148,29 @@ export const postMessage = async (token, id, content) => {
 		console.error(error)
 	}
 }
+export const editPost = async (token, id, title, description, price, location, willDeliver) => {
+	try { const response = await fetch (`${baseUrl}/posts/${id}`,{
+		method: "PATCH",
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${token}`
+		},
+		body: JSON.stringify({
+			post:{
+				title,
+				description,
+				price, 
+				location,
+				willDeliver,
+				token,
+				id,
+			}
+		})
+	});
+	const result = await response.json();
+	console.log("edit from helpers", result)
+	return result
+} catch (error){
+	console.error(error)
+}
+}

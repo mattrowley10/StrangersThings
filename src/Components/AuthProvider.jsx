@@ -8,11 +8,13 @@ export default function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
   const [id, setId] = useState("");
+  const [posts, setPosts] = useState({});
   useEffect(() => {
     async function getMe() {
       const apiResponse = await getToken(token);
       setUser(apiResponse.data);
       setId(apiResponse.data._id);
+      setPosts(apiResponse.data.posts);
     }
     if (token) {
       getMe();
@@ -25,6 +27,8 @@ export default function AuthProvider({ children }) {
     setUser,
     id,
     setId,
+    posts,
+    setPosts,
   };
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

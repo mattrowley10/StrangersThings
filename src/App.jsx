@@ -11,6 +11,7 @@ import Register from "./Components/Register";
 import SinglePost from "./Components/SinglePost";
 import Contact from "./Components/Contact";
 import Message from "./Components/Message";
+import Edit from "./Components/Edit";
 import useAuth from "./hooks/useAuth";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/:id" element={<SinglePost />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Message" element={<Message />} />
+        <Route path="/Edit" element={<Edit />} />
       </Routes>
       <Footer />
     </div>
