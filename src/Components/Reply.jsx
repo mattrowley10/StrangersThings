@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router";
 import "../Styles/Message.css";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
+import "../Styles/Message.css";
 
 export default function Message() {
   const location = useLocation();
@@ -23,7 +24,7 @@ export default function Message() {
           type="text"
           htmlFor="message"
           content={content}
-          placeholder="Message Text Here"
+          placeholder="Reply Not Functioning"
           className="message-input"
           onChange={(e) => setContent(e.target.value)}
         ></input>

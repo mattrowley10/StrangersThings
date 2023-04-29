@@ -30,7 +30,21 @@ export default function Profile() {
           if (message.fromUser.username !== user.username)
             return (
               <div className="one-message" key={message._id}>
+                <p>From: {message.fromUser.username}</p>
+                <br></br>
                 <p className="one-message-content">{message.content}</p>
+                <br></br>
+                <p>{message.post.title}</p>
+                <br></br>
+                <button
+                  className="reply-button"
+                  onClick={() => {
+                    nav("/Reply", { state: message });
+                    console.log(message);
+                  }}
+                >
+                  Reply
+                </button>
               </div>
             );
         })}
