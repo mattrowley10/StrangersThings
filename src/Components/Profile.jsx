@@ -61,7 +61,6 @@ export default function Profile() {
                 <button
                   className="details-button"
                   onClick={() => {
-                    posts.filter((post) => post._id);
                     console.log(post);
                     nav("/id", { state: post });
                   }}

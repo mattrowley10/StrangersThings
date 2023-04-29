@@ -9,8 +9,9 @@ export default function SinglePost() {
   const location = useLocation();
   const nav = useNavigate();
   const post = location.state;
-  const { user, token } = useAuth();
-  console.log(post);
+  const { user, token, id } = useAuth();
+  console.log(id);
+  console.log("author", post.author);
   return (
     <div className="singles-post">
       <h1 className="single-post-header">Details</h1>
@@ -42,7 +43,9 @@ export default function SinglePost() {
           >
             Home
           </button>
-          {post.author.username === user.username && (
+          {post.author.username !== user.username && post.author !== id ? (
+            [null]
+          ) : (
             <button
               className="deleted-button"
               onClick={async (e) => {
@@ -51,6 +54,16 @@ export default function SinglePost() {
               }}
             >
               Delete
+            </button>
+          )}
+          {post.author.username !== user.username && post.author !== id && (
+            <button
+              className="message-button"
+              onClick={() => {
+                nav("/Message", { state: post });
+              }}
+            >
+              Message
             </button>
           )}
         </ul>

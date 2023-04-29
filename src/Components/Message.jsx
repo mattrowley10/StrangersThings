@@ -19,7 +19,7 @@ export default function Message() {
         <input
           type="text"
           htmlFor="message"
-          value={content}
+          content={content}
           placeholder="Message Text Here"
           className="message-input"
           onChange={(e) => setContent(e.target.value)}
