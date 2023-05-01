@@ -92,7 +92,7 @@ export default function Profile() {
                 <button
                   className="edit-button"
                   onClick={async (e) => {
-                    await editPost(token, post._id);
+                    // await editPost(token, post._id);
                     nav("/Edit", { state: post });
                   }}
                 >

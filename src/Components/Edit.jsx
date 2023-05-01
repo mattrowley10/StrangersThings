@@ -14,8 +14,8 @@ export default function Edit() {
   const nav = useNavigate();
   const local = useLocation();
   const post = local.state;
-  const { user, token, setPost, posts } = useAuth();
-  console.log(post);
+  const { user, token, setPosts, posts } = useAuth();
+
   return (
     <div className="edit-container">
       <form
@@ -30,12 +30,16 @@ export default function Edit() {
             location,
             willDeliver
           );
+          const editedPost = editedData.data.post;
+          const newPosts = posts.map((post) => {
+            if (post !== editedData) {
+              return editedData;
+            } else {
+              return post;
+            }
+          });
+          setPosts(newPosts);
           nav("/Profile");
-          if (post === editedData) {
-            return post;
-          } else {
-            return editedData;
-          }
         }}
       >
         <div className="edit-form">
@@ -44,8 +48,11 @@ export default function Edit() {
           <label htmlFor="title">Title:</label>
           <input
             type="text"
+            id="title-input"
             defaultValue={post.title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
           />
           <br></br>
           <br></br>
@@ -54,7 +61,9 @@ export default function Edit() {
             className="description"
             type="text"
             defaultValue={post.description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
           />
           <br />
           <br />
